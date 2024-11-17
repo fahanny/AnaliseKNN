@@ -49,9 +49,9 @@ Para rodar o projeto, siga os passos abaixo:
     venv\Scripts\activate     # Para Windows
     ```
 
-4. Instale as dependências:
+4. Instale as dependências diretamente com o `pip`:
     ```bash
-    pip install -r requirements.txt
+    pip install pandas numpy matplotlib seaborn scikit-learn
     ```
 
 ## Como Rodar
