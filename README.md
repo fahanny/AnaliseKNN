@@ -1,71 +1,87 @@
-# Análise de Influência no Instagram
+# Análise Preditiva com k-Nearest Neighbors (kNN) - Influenciadores do Instagram
 
-Este projeto tem como objetivo realizar uma análise preditiva dos influenciadores do Instagram, utilizando o algoritmo k-Nearest Neighbors (kNN) para prever o "influence_score" com base em características como número de seguidores, engajamento, e outras métricas.
+Este projeto utiliza o algoritmo k-Nearest Neighbors (kNN) para prever o "influence_score" de influenciadores no Instagram, com base em diversas métricas como seguidores, engajamento e curtidas. A análise visa entender os padrões de influência e otimizar a previsão do impacto de cada influenciador.
 
 ## Descrição da Base de Dados
 
-A base de dados utilizada contém informações sobre influenciadores do Instagram, incluindo:
+A base de dados usada neste projeto contém informações sobre influenciadores do Instagram e suas métricas associadas:
 
-- **rank**: Posição no ranking dos influenciadores.
-- **channel_info**: Informação adicional sobre o canal do influenciador.
-- **influence_score**: Pontuação de influência do influenciador.
-- **posts**: Número de posts feitos pelo influenciador.
+- **rank**: Posição do influenciador no ranking.
+- **channel_info**: Informações sobre o canal do influenciador.
+- **influence_score**: Pontuação de influência do influenciador, que é a variável alvo para a previsão.
+- **posts**: Número de posts realizados pelo influenciador.
 - **followers**: Número de seguidores do influenciador.
 - **avg_likes**: Número médio de curtidas por post.
 - **60_day_eng_rate**: Taxa de engajamento nos últimos 60 dias.
 - **new_post_avg_like**: Média de curtidas nos posts mais recentes.
 - **total_likes**: Total de curtidas recebidas.
-- **country**: País de origem do influenciador.
+- **country**: País de origem do influenciador (convertido para continente no pré-processamento).
 
-Além disso, a coluna **country** foi convertida para **continent**, agrupando os influenciadores por continente.
+A coluna **country** foi mapeada para **continent**, agrupando os influenciadores por continente.
+
+## Tecnologias Usadas
+
+- **Python**: Linguagem principal para análise e modelagem.
+- **Bibliotecas**:
+  - `pandas`: Manipulação e análise de dados.
+  - `numpy`: Operações matemáticas e manipulação de arrays.
+  - `matplotlib` e `seaborn`: Visualização de dados.
+  - `scikit-learn`: Implementação de modelos preditivos e métricas de avaliação.
 
 ## Instalação
 
-Para rodar este projeto em sua máquina local, siga as etapas abaixo:
+Para rodar o projeto, siga os passos abaixo:
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/seu-usuario/nome-do-repositorio.git
+    git clone https://github.com/fahanny/AnaliseKNN.git
     ```
 
-2. Navegue até o diretório do projeto:
+2. Entre no diretório do projeto:
     ```bash
-    cd nome-do-repositorio
+    cd AnaliseKNN
     ```
 
-3. Instale as dependências necessárias:
+3. Crie um ambiente virtual (opcional, mas recomendado):
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Para Linux/macOS
+    venv\Scripts\activate     # Para Windows
+    ```
+
+4. Instale as dependências:
     ```bash
     pip install -r requirements.txt
     ```
 
-4. Certifique-se de ter os dados (`top_insta_influencers_data.csv`) na pasta `./data/` ou altere o caminho no código conforme necessário.
-
 ## Como Rodar
 
-1. Execute o código Python no arquivo `script.py`:
+1. Baixe o arquivo de dados `top_insta_influencers_data.csv` e coloque-o na pasta `./data/`.
+
+2. Execute o script Python `script.py`:
     ```bash
     python script.py
     ```
 
-2. O script irá:
+3. O código irá:
 
-    - Carregar os dados.
-    - Realizar o pré-processamento (conversão de sufixos, normalização, tratamento de valores ausentes).
+    - Carregar e limpar os dados.
+    - Realizar pré-processamento, incluindo a conversão de sufixos e normalização.
     - Dividir os dados em conjuntos de treino e teste.
-    - Realizar validação cruzada com o modelo inicial (kNN).
-    - Otimizar os hiperparâmetros utilizando GridSearchCV.
-    - Avaliar o modelo no conjunto de teste, calculando métricas como MAE, MSE e R².
-    - Visualizar a distribuição dos resíduos e a comparação entre valores reais e previstos.
+    - Avaliar a performance do modelo kNN utilizando validação cruzada.
+    - Realizar a otimização de hiperparâmetros com GridSearchCV.
+    - Avaliar o modelo no conjunto de teste com métricas como MAE, MSE e R².
+    - Exibir gráficos para análise da distribuição do "influence_score" e resíduos do modelo.
 
 ## Resultados
 
-Após a execução do código, os seguintes resultados serão exibidos:
+Após a execução, você verá os seguintes resultados:
 
-- **MAE (Erro Absoluto Médio)**: Mede a diferença média absoluta entre os valores reais e previstos.
-- **MSE (Erro Quadrático Médio)**: Mede a média dos quadrados dos erros.
-- **R² (Coeficiente de Determinação)**: Mede a proporção da variabilidade dos dados que é explicada pelo modelo.
+- **MAE (Erro Absoluto Médio)**: Diferença média entre os valores reais e os previstos.
+- **MSE (Erro Quadrático Médio)**: Média dos quadrados dos erros.
+- **R² (Coeficiente de Determinação)**: Medida da proporção de variação explicada pelo modelo.
 
-Além disso, gráficos serão gerados para visualizar a distribuição do "influence_score" e os resíduos do modelo.
+Além disso, o código gerará gráficos para visualizar a distribuição dos dados e os resíduos do modelo.
 
 ## Contribuições
 
