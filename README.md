@@ -58,8 +58,8 @@ Após a instalação, siga as etapas abaixo para rodar o código:
 ## Estrutura dos Arquivos
 
 - `/data`: Contém o arquivo CSV com os dados dos influenciadores.
-- `/src`: Contém o código-fonte do projeto, incluindo o script principal `script.py`.
-- `/plots`: Onde os gráficos gerados são salvos.
+- `/docs`: Contém o relatório detalhado sobre o projeto e resultados da análise.
+- `main.py`: Contém o código-fonte principal do projeto, incluindo o script `script.py` que realiza a análise.
 - `README.md`: Este arquivo com as instruções do projeto.
 
 ## Tecnologias Utilizadas
